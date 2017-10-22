@@ -1,0 +1,39 @@
+<html>
+<head>
+	<script src="{{ asset('js/modernizr/modernizr-cookies.js') }}"></script>
+</head>
+<body style="background-color: white;">
+</body>
+<script>
+		Modernizr.on('cookies', function( result ) {
+			if (result) {
+				function setCookie(cname, cvalue, exdays) {
+			       var d = new Date();
+			       d.setTime(d.getTime() + (exdays*24*60*60*1000));
+			       var expires = "expires="+ d.toUTCString();
+			       document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+			    }
+				var width = Math.max(
+				   document.documentElement["clientWidth"],
+				   document.body["scrollWidth"],
+				   document.documentElement["scrollWidth"],
+				   document.body["offsetWidth"],
+				   document.documentElement["offsetWidth"]
+				);
+				var height = Math.max(
+				   document.documentElement["clientHeight"],
+				   document.body["scrollHeight"],
+				   document.documentElement["scrollHeight"],
+				   document.body["offsetHeight"],
+				   document.documentElement["offsetHeight"]
+				);
+				setCookie("DEVICE_WIDTH", width, 1/24/60/12); //5 seconds
+				setCookie("DEVICE_HEIGHT", height, 1/24/60/12); //5 seconds
+				window.location.replace("{{ url('homepage') }}");
+			} else {
+			    console.error('Your browser does not support cookies. Auto fit images function cannot work');
+			}
+		});
+			
+	</script>
+</html>

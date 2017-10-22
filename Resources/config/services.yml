@@ -1,0 +1,6 @@
+services:
+  immersiveImage.services.dimensionService:
+    class: ImmersiveImageBundle\Services\DimensionService
+  immersiveImage.services.imageService:
+    class: ImmersiveImageBundle\Services\ImageService
+    arguments: ['@doctrine_mongodb', '@immersiveImage.services.dimensionService', '%kernel.root_dir%']
