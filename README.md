@@ -25,13 +25,8 @@ background-2034x1806.jpg
     new ImmersiveImageBundle\ImmersiveImageBundle(),
   ];
 
-<<<<<<< HEAD
-  #в routing.yml
-  immersive_image:
-=======
  #в routing.yml
  immersive_image:
->>>>>>> branch 'master' of https://github.com/slyisarenko-ilya/ImmersiveImageBundle.git
     resource: "@ImmersiveImageBundle/Controller/"
     type:     annotation
     prefix:   /
@@ -47,15 +42,15 @@ background-2034x1806.jpg
 Необходимо настроить .htaccess-файл, хранящийся в корне сайта/проекта.
 В секцию mod_rewrite добавить команды: 
 
-   RewriteEngine On
-   #эти команды необходимы для работы модуля
-   RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
-   RewriteRule ^(.*) - [E=BASE:%1]
-   RewriteCond %{REQUEST_URI} (images|uploads)(\/.+)*\/(.+)[.](?:png|jpg|jpeg)(?:\$(\w+))
-   RewriteRule (.*) %{ENV:BASE}/app.php/img?name=%3&domain=%1%2&grade=%4 [R]
-   #stop rewrite processing when /img already approached
-   RewriteCond expr "! %{REQUEST_URI} -strmatch '.*/img$'"
-   RewriteRule .* - [END]
-   #остальные инструкции
+  RewriteEngine On
+  #эти команды необходимы для работы модуля
+  RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
+  RewriteRule ^(.*) - [E=BASE:%1]
+  RewriteCond %{REQUEST_URI} (images|uploads)(\/.+)*\/(.+)[.](?:png|jpg|jpeg)(?:\$(\w+))
+  RewriteRule (.*) %{ENV:BASE}/app.php/img?name=%3&domain=%1%2&grade=%4 [R]
+  #stop rewrite processing when /img already approached
+  RewriteCond expr "! %{REQUEST_URI} -strmatch '.*/img$'"
+  RewriteRule .* - [END]
+  #остальные инструкции
 
 Пример работы модуля можно посмотреть на сайте http://liquid-crystal.ru, изменяя размер окна браузера и анализируя ссылки изображений 
