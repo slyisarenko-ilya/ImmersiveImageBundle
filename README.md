@@ -25,13 +25,8 @@ background-2034x1806.jpg
     new ImmersiveImageBundle\ImmersiveImageBundle(),
   ];
 
-<<<<<<< HEAD
-  #в routing.yml
-  immersive_image:
-=======
  #в routing.yml
  immersive_image:
->>>>>>> branch 'master' of https://github.com/slyisarenko-ilya/ImmersiveImageBundle.git
     resource: "@ImmersiveImageBundle/Controller/"
     type:     annotation
     prefix:   /
